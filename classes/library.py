@@ -15,12 +15,12 @@ class Library:
                             self.users[index].borrowed_books.append(book)
 
     def return_book(self,user_id, book_isbn):
-        for b in self.books:
-            if book_isbn == b.isbn:
-                for u in self.users:
-                    if user_id == u.id:
-                        b.is_available = True
-                        u.borrowed_books.remove(b)
+        for book in self.books:
+            if book_isbn == book.isbn:
+                for user in self.users:
+                    if user_id == user.id:
+                        book.is_available = True
+                        user.borrowed_books.remove(book)
 
 
 
