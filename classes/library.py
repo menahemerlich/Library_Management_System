@@ -11,7 +11,7 @@ class Library:
 
     def add_user(self, user: User):
         self.users.append(user)
-
+        
     def borrow_book(self,user_id, book_isbn):
         for index,user in enumerate(self.users):
             if user.id == user_id:
@@ -29,8 +29,11 @@ class Library:
                         book.is_available = True
                         user.borrowed_books.remove(book)
 
-
-
-   
+    def list_available_books(self):
+        book_list = []
+        for book in self.books:
+            if book.is_available:
+                book_list.append(book)
+        return book_list
 
 
