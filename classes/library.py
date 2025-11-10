@@ -1,9 +1,16 @@
-from classes import book,User
+from classes.book import Book
+from classes.User import User
 
 class Library:
-    def __init__(self, books:list, users:list):
+    def __init__(self, books: list[Book], users: list[User]):
         self.books = books
         self.users = users
+        
+    def add_book(self, book: Book):
+        self.books.append(book)
+
+    def add_user(self, user: User):
+        self.users.append(user)
 
     def borrow_book(self,user_id, book_isbn):
         for index,user in enumerate(self.users):
@@ -22,5 +29,8 @@ class Library:
                         book.is_available = True
                         user.borrowed_books.remove(book)
 
+
+
+   
 
 
