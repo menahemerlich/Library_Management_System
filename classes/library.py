@@ -36,4 +36,18 @@ class Library:
                 book_list.append(book)
         return book_list
 
+    def search_book(self, search_type: str, search_word: str):
+        for book in self.books:
+            if search_type == "title":
+                if book.title == search_word:
+                    return book
+            elif search_type == "author":
+                if book.author == search_word:
+                    return book
+            elif search_type == "ISBN":
+                if book.isbn == search_word:
+                    return book
+            else:
+                print("ERROR")
+        return None
 
