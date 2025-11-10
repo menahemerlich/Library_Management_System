@@ -12,7 +12,11 @@ class Library:
     def add_user(self, user: User):
         self.users.append(user)
 
-
+    def list_available_books(self):
+        book_list = []
+        for book in self.books:
+            if book.is_available:
+                book_list.append(book)
 
 
 
