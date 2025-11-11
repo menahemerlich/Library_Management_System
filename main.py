@@ -54,4 +54,3 @@ def menu():
             print("Invalid choice, try again.")
 
 menu()
-print(my_library.books)
