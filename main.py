@@ -54,3 +54,5 @@ def menu():
             print("Invalid choice, try again.")
 
 menu()
+for book in my_library.books:
+    print(book.title)

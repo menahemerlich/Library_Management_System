@@ -50,7 +50,7 @@ class Library:
                 if book.author == search_word:
                     book.get_book_info()
             elif search_type == "ISBN":
-                if book.isbn == search_word:
+                if book.isbn == int(search_word):
                     book.get_book_info()
             else:
                 print("We didn't find what you were looking for.")

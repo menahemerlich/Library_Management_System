@@ -4,11 +4,11 @@ import json
 class FileHandling:
     @staticmethod
     def guarding_json( library:Library):
-        data={'books':{}, 'users':{}}
+        data={'books':[], 'users':[]}
         for book in library.books:
-            data['books'].update(book.__dict__)
+            data['books'].append(book.__dict__)
         for user in library.users:
-            data['users'].update(user.__dict__)
+            data['users'].append(user.__dict__)
         with open('library.json','w') as j:
             j.write(json.dumps(data))
 
@@ -16,8 +16,7 @@ class FileHandling:
     def rescue_from_json(file_name = 'library.json', library:Library = Library([],[])):
         try:
             with open( file_name, "r" ) as j:
-                data = j.read()
-                data = json.loads(data)
+                data = json.load(j)
                 if len(data['books']) > 0:
                     for book in data['books']:
                         library.add_book(Book(book['title'],book[ 'author'], book['isbn'], book['is_available']))
