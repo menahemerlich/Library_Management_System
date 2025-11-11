@@ -20,6 +20,8 @@ class Library:
                         if book.is_available:
                             book.is_available = False
                             self.users[index].borrowed_books.append(book)
+                            return True
+        return False
 
     def return_book(self,user_id, book_isbn):
         for book in self.books:
@@ -28,26 +30,29 @@ class Library:
                     if user_id == user.id:
                         book.is_available = True
                         user.borrowed_books.remove(book)
+                        return True
+        return False
 
     def list_available_books(self):
         book_list = []
         for book in self.books:
             if book.is_available:
-                book_list.append(book)
-        return book_list
+                book_list.append(book.__dict__)
+        for book in book_list:
+            print(book)
 
     def search_book(self, search_type: str, search_word: str):
         for book in self.books:
             if search_type == "title":
                 if book.title == search_word:
-                    return book
+                    book.get_book_info()
             elif search_type == "author":
                 if book.author == search_word:
-                    return book
+                    book.get_book_info()
             elif search_type == "ISBN":
                 if book.isbn == search_word:
-                    return book
+                    book.get_book_info()
             else:
-                print("ERROR")
-        return None
+                print("We didn't find what you were looking for.")
+
 
