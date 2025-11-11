@@ -4,7 +4,6 @@ from classes.File_Handling import FileHandling
 
 my_library = FileHandling.rescue_from_json()
 def menu():
-    cuonter = 100
     while True:
         print("===menu===\n"
               "1. Add book\n"
@@ -16,16 +15,14 @@ def menu():
               "7. Save & Exit")
         choice = input("Enter your choice: ")
         if choice == "1":
-            cuonter += 1
             title = input("Enter the title: ")
             author = input("Enter the author: ")
-            isbn = cuonter
+            isbn = int(input("Enter the ISBN: "))
             my_library.add_book(Book(title, author, isbn))
             print("The book was added successfully.")
         elif choice == "2":
-            cuonter += 1
             name = input("Enter your name: ")
-            user_id = cuonter
+            user_id = int(input("Enter your user_id: "))
             my_library.add_user(User(name, user_id))
             print(f"User added successfully, name: {name}, user_id: {user_id}")
         elif choice == "3":
